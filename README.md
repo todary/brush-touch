@@ -7,13 +7,11 @@ The Brush Touch API provides endpoints for user management and order processing.
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
-- [Environment Setup](#environment-setup)
 - [API Endpoints](#api-endpoints)
     - [Register User](#register-user)
     - [Login User](#login-user)
     - [Create Order](#create-order)
     - [Logout User](#logout-user)
-- [Testing with Postman](#testing-with-postman)
 - [License](#license)
 
 ---
@@ -29,9 +27,25 @@ The Brush Touch API provides endpoints for user management and order processing.
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/brush-touch.git
+   git clone https://github.com/todary/brush-touch.git
    cd brush-touch
 
+
+2. Using Composer :
+
+```
+composer install
+```
+
+If you don't have composer, you can get it from [Composer](https://getcomposer.org/)
+
+3. Run migration and seeder Data
+```
+php artisan migrate:refresh --seed
+
+```
+
+4. import collection and environment for postman in postman folder  
 
 ## API Endpoints
 
@@ -44,6 +58,7 @@ Request Body:
 
 ### Register User
 -- **Headers:** Accept: application/json,Accept-Language:en
+
 
 ### Request Body:
 
