@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateOrderRequest;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\ValidationErrorResource;
 use App\Services\OrderManagementService;
@@ -16,19 +17,21 @@ class OrderController extends Controller
     {
         $this->orderService = $orderService;
     }
-
-    public function createOrder(Request $request)
+    public function createOrder(ValidateOrderRequest $request)
     {
         try {
-            $order = $this->orderService->createOrder($request->all());
+            $order = $this->orderService->createOrder($request->services);
+
             $orderResource = new OrderResource($order);
+
             return response()->json([
                 'status' => 'success',
-                'order' => $orderResource,
+                'order' => $orderResource, // Change this to 'order' instead of 'orders'
                 'message' => __('messages.order_success')
             ]);
         } catch (ValidationException $e) {
             return new ValidationErrorResource($e->errors());
         }
     }
+
 }
